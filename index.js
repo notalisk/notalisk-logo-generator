@@ -1,6 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+const shapeClasses = require('./lib/shapes.js');
+
 // List of shapes
 const shapes = ['circle', 'square', 'triangle'];
 
@@ -9,7 +11,7 @@ const questions = [
     {
         type: 'text',
         message: 'Enter up to 3 characters:',
-        name: 'chars'
+        name: 'text'
     },
     {
         type: 'text',
@@ -29,11 +31,27 @@ const questions = [
     }
 ];
 
+var myShape = {};
+
 // Create the logo and save to a file
 function drawSVG(data) {
-    var content = '';
+    console.log(data);
 
-    fs.writeFile(data.fileName, content, function (err) {
+    switch(data.shape) {
+        case 'circle':
+            myShape = new shapeClasses.Circle(data.color, data.text);
+            break;
+        case 'square':
+            myShape = new shapeClasses.Square(data.color, data.text);
+            break;
+        case 'triangle':
+            myShape = new shapeClasses.Triangle(data.color, data.text);
+            break;
+    }
+
+    var content = `${myShape.header} ${myShape.code} ${myShape.text} ${myShape.footer}`;
+
+    fs.writeFile(`${data.fileName}.svg`, content, function (err) {
         err ? console.log(err) : console.log("Success");
     });
 }
