@@ -47,7 +47,6 @@ function validateResponse(data) {
 
 // Create the logo and save to a file
 function drawSVG(data) {
-    console.log(data);
 
     switch(data.shape) {
         case 'circle':
