@@ -33,6 +33,18 @@ const questions = [
 
 var myShape = {};
 
+function validateResponse(data) {
+    // Check for number of characters
+    if (data.text.length > 3) {
+        console.log('ERROR');
+        console.log('You entered too many characters, please try again (run the file again).');
+        return;
+    }
+
+    // If all is good, call the draw function
+    drawSVG(data);
+}
+
 // Create the logo and save to a file
 function drawSVG(data) {
     console.log(data);
@@ -61,7 +73,7 @@ function init() {
     inquirer
         .prompt(questions)
         .then((data) => {
-            drawSVG(data);
+            validateResponse(data);
         })
 }
 
