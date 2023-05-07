@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const shapeClasses = require('./lib/shapes.js');
+const classes = require('./lib/shapes.js');
 
 // List of shapes
 const shapes = ['circle', 'square', 'triangle'];
@@ -39,17 +39,17 @@ function drawSVG(data) {
 
     switch(data.shape) {
         case 'circle':
-            myShape = new shapeClasses.Circle(data.color, data.text);
+            myShape = new classes.Circle(data.color, data.text);
             break;
         case 'square':
-            myShape = new shapeClasses.Square(data.color, data.text);
+            myShape = new classes.Square(data.color, data.text);
             break;
         case 'triangle':
-            myShape = new shapeClasses.Triangle(data.color, data.text);
+            myShape = new classes.Triangle(data.color, data.text);
             break;
     }
 
-    var content = `${myShape.header} ${myShape.code} ${myShape.text} ${myShape.footer}`;
+    var content = `${myShape.header} ${myShape.code} <text x="100" y="125" font-size="45" fill="white">${data.text}</text> ${myShape.footer}`;
 
     fs.writeFile(`${data.fileName}.svg`, content, function (err) {
         err ? console.log(err) : console.log("Success");
