@@ -15,7 +15,7 @@ const questions = [
     },
     {
         type: 'text',
-        message: 'Enter a color:',
+        message: 'Enter a color (either a valid color name or a hexadecimal starting with #):',
         name: 'color'
     },
     {
@@ -34,7 +34,7 @@ const questions = [
 var myShape = {};
 
 function validateResponse(data) {
-    // Check for number of characters
+    // Check that number of characters is not greater than 3
     if (data.text.length > 3) {
         console.log('ERROR');
         console.log('You entered too many characters, please try again (run the file again).');
@@ -51,17 +51,17 @@ function drawSVG(data) {
 
     switch(data.shape) {
         case 'circle':
-            myShape = new classes.Circle(data.color, data.text);
+            myShape = new classes.Circle(data.color);
             break;
         case 'square':
-            myShape = new classes.Square(data.color, data.text);
+            myShape = new classes.Square(data.color);
             break;
         case 'triangle':
-            myShape = new classes.Triangle(data.color, data.text);
+            myShape = new classes.Triangle(data.color);
             break;
     }
 
-    var content = `${myShape.header} ${myShape.code} <text x="100" y="125" font-size="45" fill="white">${data.text}</text> ${myShape.footer}`;
+    var content = `${myShape.header} ${myShape.render()} <text x="150" y="125" font-size="45" text-anchor="middle" fill="white">${data.text}</text> ${myShape.footer}`;
 
     fs.writeFile(`${data.fileName}.svg`, content, function (err) {
         err ? console.log(err) : console.log("Success");
