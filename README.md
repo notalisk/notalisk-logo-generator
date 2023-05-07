@@ -20,3 +20,4 @@ Upon completion the console will print "Success". Your logo will be found in a s
 
 ## Walkthrough Video
 
+https://user-images.githubusercontent.com/81662512/236666852-7fa34f2a-2a3e-4149-b269-1b86e8ea29ac.mp4
