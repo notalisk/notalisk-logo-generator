@@ -20,4 +20,4 @@ Upon completion the console will print "Success". Your logo will be found in a s
 
 ## Walkthrough Video
 
-https://user-images.githubusercontent.com/81662512/236666852-7fa34f2a-2a3e-4149-b269-1b86e8ea29ac.mp4
+https://github.com/notalisk/notalisk-logo-generator/assets/81662512/e4866e39-e048-4857-9556-9bb13062692f
